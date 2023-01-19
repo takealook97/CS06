@@ -6,8 +6,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("(프로그램 실행)\n" + "체스 보드를 초기화했습니다.\n");
-        Board board = new Board();
-        board.frame();
+
+        new Board().makeEmptyFrame();
+        new Pawn().makePawn();
+        new Rook().makeRook();
+        new Knight().makeKnight();
+        new Bishop().makeBishop();
+        new King().makeKing();
+        new Queen().makeQueen();
+        new Output().printBoard();
+
         Output output = new Output();
         out:
         while (true) {

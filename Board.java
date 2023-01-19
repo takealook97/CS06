@@ -1,8 +1,9 @@
 public class Board {
+    boolean existance;
+    static String[][] frame = new String[10][9];
     int whiteScore;
     int BlackScore;
-    void frame() {
-        String[][] frame = new String[10][9];
+    void makeEmptyFrame() {
         frame[0][0] = " ";
         frame[9][0] = " ";
         for (int i = 1; i < 9; i++) {
@@ -15,12 +16,12 @@ public class Board {
                 frame[i][j] = "·";
             }
         }
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(frame[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println();
+//        for (int i = 0; i < 10; i++) {
+//            for (int j = 0; j < 9; j++) {
+//                System.out.print(frame[i][j]);
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
     }
 }
