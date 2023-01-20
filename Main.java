@@ -28,7 +28,7 @@ public class Main {
                         if (input[0].charAt(0) == '?') {
                             input[0] = input[0].replace("?", "");
                             if (inputRange.inputCheck(input[0])) {
-                                //말이 움직일 수 있는 경우의수 출력
+                                new Cases().showMovablePosition(input[0]);
                             }
                         } else output.printError();
                     } else output.printError();
