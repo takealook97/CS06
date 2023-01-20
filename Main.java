@@ -45,6 +45,10 @@ public class Main {
                             case "bishop" -> new Bishop().movePiece(colorAndPiece);
                             case "king" -> new King().movePiece(colorAndPiece);
                             case "queen" -> new Queen().movePiece(colorAndPiece);
+                            default -> {
+                                output.printEmptyError();
+                                continue;
+                            }
                         }
                         output.printBoard();
                     } else output.printError();
