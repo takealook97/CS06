@@ -8,22 +8,28 @@ public class Output {
         }
         System.out.println();
     }
+    void initPiece(){
+        new Board().makeEmptyFrame();
+        new Pawn().makePawn();
+        new Rook().makeRook();
+        new Knight().makeKnight();
+        new Bishop().makeBishop();
+        new King().makeKing();
+        new Queen().makeQueen();
+        new Output().printBoard();
+    }
 
     void printError() {
         System.out.println("잘못된 입력 형식입니다. 다시 입력하세요.");
     }
-
-    void PrintLimit() {
-        System.out.println("그 칸으로는 움직일 수 없습니다.");
+    void printEmptyError(){
+        System.out.println("빈 칸입니다. 다시 입력하세요.");
+    }
+    void printTurnError(){
+        System.out.println("상대의 차례입니다.");
     }
 
-    boolean inputCheck(String input) {
-        boolean inputRange = false;
-        if (input.length() == 2) {
-            if (input.charAt(1) >= 49 && input.charAt(1) <= 56 && input.charAt(0) >= 65 && input.charAt(0) <= 72) {
-                inputRange = true;
-            }
-        }
-        return inputRange;
+    void PrintLimit() {
+        System.out.println("그 칸으로는 움직일 수 없습니다. 다시 입력하세요");
     }
 }

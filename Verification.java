@@ -1,5 +1,5 @@
 public class Verification {
-    boolean blackOrWhite;
+//    boolean blackOrWhite;
     static int file;//가로
     static int rank;//세로 -> 이차원배열[세로][가로] 형태
     static int objectFile;
@@ -22,7 +22,6 @@ public class Verification {
                 return new String[]{"black", "pawn"};
             }
             case "\u2659" -> {
-                new Pawn().movePiece(input);
                 return new String[]{"white", "pawn"};
             }
             case "\u265C" -> {

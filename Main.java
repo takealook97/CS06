@@ -8,14 +8,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("(프로그램 실행)\n" + "체스 보드를 초기화했습니다.\n");
 
-        new Board().makeEmptyFrame();
-        new Pawn().makePawn();
-        new Rook().makeRook();
-        new Knight().makeKnight();
-        new Bishop().makeBishop();
-        new King().makeKing();
-        new Queen().makeQueen();
-        new Output().printBoard();
+        new Output().initPiece();
 
         InputRange inputRange = new InputRange();
         Output output = new Output();

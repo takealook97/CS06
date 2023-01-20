@@ -3,7 +3,7 @@ public class Board {
     static boolean[][] whiteExistance = new boolean[10][9];
     static String[][] frame = new String[10][9];
     int whiteScore;
-    int BlackScore;
+    int blackScore;
 
     void makeEmptyFrame() {
         frame[0][0] = " ";
@@ -18,5 +18,9 @@ public class Board {
                 frame[i][j] = "·";
             }
         }
+    }
+
+    String printScore() {
+        return "white : " + whiteScore + " / black : " + blackScore;
     }
 }
