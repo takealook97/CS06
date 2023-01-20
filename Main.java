@@ -36,8 +36,17 @@ public class Main {
                     } else output.printError();
                 }
                 case 2 -> {
-                    if (output.inputCheck(input[0]) && output.inputCheck(input[1])) {
-                        //이동 메서드 실행
+                    if (output.inputCheck(input[0]) && output.inputCheck(input[1])) {//범위확인
+                        String[] colorAndPiece = new Verification().verifyBlock(input);//검증
+                        switch(colorAndPiece[1]){//처리&계산
+                            case "pawn" -> new Pawn().movePiece(colorAndPiece);
+                            case "rook" -> new Rook().movePiece(colorAndPiece);
+                            case "knight" -> new Knight().movePiece(colorAndPiece);
+                            case "bishop" -> new Bishop().movePiece(colorAndPiece);
+                            case "king" -> new King().movePiece(colorAndPiece);
+                            case "queen" -> new Queen().movePiece(colorAndPiece);
+                        }
+                        output.printBoard();
                     } else output.printError();
                 }
                 default -> output.printError();

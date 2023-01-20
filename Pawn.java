@@ -9,7 +9,15 @@ public class Pawn extends Movement {
     }
 
     @Override
-    public void movePiece() {
-
+    public void movePiece(String[] input) {
+            if (input[0].equals("black")) {
+                Board.frame[Verification.objectRank][Verification.objectFile] = "\u265F";
+                Board.frame[Verification.rank][Verification.file] = "·";
+            } else if (input[0].equals("white")) {
+                Board.frame[Verification.objectRank][Verification.objectFile] = "\u2659";
+                Board.frame[Verification.rank][Verification.file] = "·";
+        } else {
+            new Output().PrintLimit();
+        }
     }
 }

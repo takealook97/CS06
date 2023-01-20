@@ -13,6 +13,10 @@ public class Output {
         System.out.println("잘못된 입력 형식입니다. 다시 입력하세요.");
     }
 
+    void PrintLimit() {
+        System.out.println("그 칸으로는 움직일 수 없습니다.");
+    }
+
     boolean inputCheck(String input) {
         boolean inputRange = false;
         if (input.length() == 2) {
