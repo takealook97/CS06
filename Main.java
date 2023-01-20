@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("(프로그램 실행)\n" + "체스 보드를 초기화했습니다.\n");
@@ -16,7 +17,9 @@ public class Main {
         new Queen().makeQueen();
         new Output().printBoard();
 
+        InputRange inputRange = new InputRange();
         Output output = new Output();
+
         out:
         while (true) {
             System.out.print("명령을 입력하세요 > ");
@@ -29,16 +32,20 @@ public class Main {
                     } else if (!input[0].equals("")) {
                         if (input[0].charAt(0) == '?') {
                             input[0] = input[0].replace("?", "");
-                            if (output.inputCheck(input[0])) {
+                            if (inputRange.inputCheck(input[0])) {
                                 //말이 움직일 수 있는 경우의수 출력
                             }
                         } else output.printError();
                     } else output.printError();
                 }
                 case 2 -> {
-                    if (output.inputCheck(input[0]) && output.inputCheck(input[1])) {//범위확인
+                    if (inputRange.inputCheck(input[0]) && inputRange.inputCheck(input[1])) {//범위확인
                         String[] colorAndPiece = new Verification().verifyBlock(input);//검증
-                        switch(colorAndPiece[1]){//처리&계산
+
+                        new Turn().verifyTurn(colorAndPiece[0]);//차례 검증
+                        if (!Turn.result) continue;//자신의 차례가 아니면 오류 출력(아무일도 일어나지 않음)
+
+                        switch (colorAndPiece[1]) {//처리&계산
                             case "pawn" -> new Pawn().movePiece(colorAndPiece);
                             case "rook" -> new Rook().movePiece(colorAndPiece);
                             case "knight" -> new Knight().movePiece(colorAndPiece);
