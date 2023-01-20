@@ -18,7 +18,7 @@ public class Knight extends Movement {
             Board.frame[Verification.objectRank][Verification.objectFile] = "\u2658";
             Board.frame[Verification.rank][Verification.file] = "·";
         } else {
-            new Output().PrintLimit();
+            new Output().printLimit();
         }
     }
 }

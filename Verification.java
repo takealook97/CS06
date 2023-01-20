@@ -1,7 +1,9 @@
 public class Verification {
-//    boolean blackOrWhite;
     static int file;//가로
     static int rank;//세로 -> 이차원배열[세로][가로] 형태
+
+    public enum position {rank, file}
+
     static int objectFile;
     static int objectRank;
     String color;

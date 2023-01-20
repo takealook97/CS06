@@ -14,7 +14,7 @@ public class Queen extends Movement{
             Board.frame[Verification.objectRank][Verification.objectFile] = "\u2655";
             Board.frame[Verification.rank][Verification.file] = "·";
         } else {
-            new Output().PrintLimit();
+            new Output().printLimit();
         }
     }
 }

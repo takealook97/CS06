@@ -15,6 +15,8 @@ public class Main {
 
         out:
         while (true) {
+            int scoreOfBlack = Board.blackScore;
+            int scoreOfWhite = Board.whiteScore;
             System.out.print("명령을 입력하세요 > ");
             String[] input = br.readLine().split("->");
             switch (input.length) {
@@ -52,6 +54,10 @@ public class Main {
                         }
                         output.printBoard();
                     } else output.printError();
+                    new Board().calculateScore();
+                    if (Board.blackScore != scoreOfBlack || Board.whiteScore != scoreOfWhite) {
+                        output.printScore();
+                    }
                 }
                 default -> output.printError();
             }

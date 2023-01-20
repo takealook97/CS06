@@ -18,7 +18,7 @@ public class Bishop extends Movement{
             Board.frame[Verification.objectRank][Verification.objectFile] = "\u2657";
             Board.frame[Verification.rank][Verification.file] = "·";
         } else {
-            new Output().PrintLimit();
+            new Output().printLimit();
         }
     }
 }
