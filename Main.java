@@ -57,6 +57,7 @@ public class Main {
                     new Board().calculateScore();
                     if (Board.blackScore != scoreOfBlack || Board.whiteScore != scoreOfWhite) {
                         output.printScore();
+
                     }
                 }
                 default -> output.printError();
