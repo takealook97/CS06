@@ -12,7 +12,7 @@ public class Main {
 
         InputRange inputRange = new InputRange();
         Output output = new Output();
-
+        
         out:
         while (true) {
             int scoreOfBlack = Board.blackScore;
