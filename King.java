@@ -10,15 +10,15 @@ public class King extends ChessPiece {
     @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {
         ArrayList<ArrayList<Position>> list = new ArrayList<>();
-        list.add(new ArrayList<>());
+        for(int i = 0; i < 8; i++) list.add(new ArrayList<>());
         int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] dy = {-1, 0, 1, 1, -1, 1, 0, -1};
 
         for (int i = 0; i < 8; i++) {
             int nx = dx[i] + position.getX();
             int ny = dy[i] + position.getY();
-            if (nx > 0 && nx < 9 && ny > 0 && ny < 9) {
-                list.get(0).add(new Position(ny, nx));
+            if (nx >= 1 && nx <= 8 && ny >= 1 && ny <= 8) {
+                list.get(i).add(new Position(ny, nx));
             }
         }
         return list;
