@@ -19,12 +19,12 @@ public class Bishop extends ChessPiece {
             list.add(new ArrayList<>());
         }
 
-        while (curY++ < 9) {
-            if (leftX-- > 0) {
-                list.get(0).add(new Position(curY, leftX));
+        while (curY++ <= 7) {
+            if (leftX-- >= 2) {
+                list.get(0).add(new Position(curY, leftX));//북서
             }
-            if (rightX++ > 0) {
-                list.get(1).add(new Position(curY, rightX));
+            if (rightX++ <= 7) {
+                list.get(1).add(new Position(curY, rightX));//북동
             }
         }
 
@@ -32,12 +32,12 @@ public class Bishop extends ChessPiece {
         leftX = position.getX();
         rightX = position.getX();
 
-        while (curY-- > 0) {
-            if (leftX-- > 0) {
-                list.get(2).add(new Position(curY, leftX));
+        while (curY-- >= 2) {
+            if (leftX-- >= 2) {
+                list.get(2).add(new Position(curY, leftX));//서남
             }
-            if (rightX++ > 0) {
-                list.get(3).add(new Position(curY, rightX));
+            if (rightX++ <= 7) {
+                list.get(3).add(new Position(curY, rightX));//동남
             }
         }
 

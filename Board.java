@@ -7,7 +7,6 @@ public class Board {
     public static HashMap<String, ChessPiece> pieceMap = new HashMap<>();
 
     public void initPiece() {
-//        pieceMap = new HashMap<>();
         for (int i = 1; i <= 8; i++) {
             pieceMap.put(String.valueOf((char) ('A' + i - 1)) + 2, new Pawn(new Position(2, i), ChessConstant.BLACK));
             pieceMap.put(String.valueOf((char) ('A' + i - 1)) + 7, new Pawn(new Position(7, i), ChessConstant.WHITE));
@@ -34,7 +33,7 @@ public class Board {
         pieceMap.put("D8", new King(new Position(8, 4), ChessConstant.WHITE));
     }
 
-    public ArrayList<String> getPossiblePosition(String rankFile) {
+    public ArrayList<String> getPossiblePosition(String rankFile) {//todo : 이해하기
         ArrayList<String> result = new ArrayList<>();
         if (pieceMap.containsKey(rankFile)) {
             ChessPiece piece = pieceMap.get(rankFile);
@@ -44,16 +43,15 @@ public class Board {
             for (ArrayList<Position> arrList : list) {
                 for (Position p : arrList) {
                     if (!pieceMap.containsKey(Converter.toRankFile(p))) {
-                        result.add(Converter.toRankFile(p));
+                        result.add(Converter.toRankFile(p));//위치를 안가지고 있으면 더하기
                     } else if (pieceMap.get(Converter.toRankFile(p)).isBlack != piece.isBlack) {
-                        result.add(Converter.toRankFile(p));
+                        result.add(Converter.toRankFile(p));//색깔이 다르면 더하기
                         break;
                     } else {
                         break;
                     }
                 }
             }
-
             return result;
         }
         return result;
@@ -65,9 +63,7 @@ public class Board {
 
             for (String rankFile : list) {
                 if (Converter.toRankFile(to).equals(rankFile)) {
-                    if (pieceMap.containsKey(rankFile)) {
-                        pieceMap.remove(rankFile);
-                    }
+                    pieceMap.remove(rankFile);
                     ChessPiece piece = pieceMap.get(Converter.toRankFile(from));
                     piece.position = to;
                     pieceMap.remove(Converter.toRankFile(from));
