@@ -6,10 +6,6 @@ public class Knight extends ChessPiece {
         this.isBlack = isBlack;
         pieceType = isBlack ? ChessConstant.BLACK_KNIGHT : ChessConstant.WHITE_KNIGHT;
     }
-@Override
-public void movePiece(Position from, Position to) {
-
-}
 
     @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {

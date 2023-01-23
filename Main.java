@@ -12,7 +12,7 @@ public class Main {
         Board board = new Board();
         board.initPiece();
 
-        output.printBoard(board.pieceMap.values());
+        output.printBoard(Board.pieceMap.values());
 
         InputRange inputRange = new InputRange();
 
@@ -38,10 +38,16 @@ public class Main {
                 }
                 case 2 -> {
                     if (inputRange.inputCheck(input[0]) && inputRange.inputCheck(input[1])) {//범위확인
-                        board.move(Converter.toPosition(input[0]), Converter.toPosition(input[1]));
+                        if (board.getPossiblePosition(input[0]).contains(input[1])) {//움직일 수 있는 칸인지 확인
+                            board.move(Converter.toPosition(input[0]), Converter.toPosition(input[1]));
+                        } else {
+                            output.printLimit();
+                            continue;
+                        }
 //                        String[] colorAndPiece = new Verification().verifyBlock(input);//검증
 //                        new Turn().verifyTurn(colorAndPiece[0]);//차례 검증
 //                        if (!Turn.result) continue;//자신의 차례가 아니면 오류 출력(아무일도 일어나지 않음)
+//                        new Turn().verifyTurn(input[0]);
 //                        switch (colorAndPiece[1]) {//처리&계산
 //                            case "pawn" -> new Pawn().movePiece(colorAndPiece);
 //                            case "rook" -> new Rook().movePiece(colorAndPiece);
@@ -54,12 +60,11 @@ public class Main {
 //                                continue;
 //                            }
 //                        }
-                        output.printBoard(board.pieceMap.values());
+                        output.printBoard(Board.pieceMap.values());
                     } else output.printError();
                     board.calculateScore();
                     if (Board.blackScore != scoreOfBlack || Board.whiteScore != scoreOfWhite) {
                         output.printScore();
-
                     }
                 }
                 default -> output.printError();

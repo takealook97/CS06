@@ -8,11 +8,6 @@ public class Bishop extends ChessPiece {
     }
 
     @Override
-    public void movePiece(Position from, Position to) {
-
-    }
-
-    @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {
         //TODO 위 아래 나눠서 움직이는 게 아니라 한번에 움직일 수 있는 방법 생각해보기
         ArrayList<ArrayList<Position>> list = new ArrayList<>(4);

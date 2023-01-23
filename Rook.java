@@ -9,11 +9,6 @@ public class Rook extends ChessPiece {
     }
 
     @Override
-    public void movePiece(Position from, Position to) {
-
-    }
-
-    @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {
         ArrayList<ArrayList<Position>> list = new ArrayList<>(4);
         for(int i = 0; i < 4; i++) list.add(new ArrayList<>());

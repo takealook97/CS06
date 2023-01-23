@@ -8,11 +8,6 @@ public class Pawn extends ChessPiece {
     }
 
     @Override
-    public void movePiece(Position from, Position to) {
-
-    }
-
-    @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {
         ArrayList<ArrayList<Position>> list = new ArrayList<>();
         list.add(new ArrayList<>());

@@ -8,11 +8,6 @@ public class King extends ChessPiece {
     }
 
     @Override
-    public void movePiece(Position from, Position to) {
-
-    }
-
-    @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {
         ArrayList<ArrayList<Position>> list = new ArrayList<>();
         list.add(new ArrayList<>());
@@ -23,7 +18,7 @@ public class King extends ChessPiece {
             int nx = dx[i] + position.getX();
             int ny = dy[i] + position.getY();
             if (nx > 0 && nx < 9 && ny > 0 && ny < 9) {
-                list.get(0).add(new Position(ny,nx));
+                list.get(0).add(new Position(ny, nx));
             }
         }
         return list;

@@ -2,12 +2,13 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class Output {
+    static String[][] frame = new String[9][9];
+
     public void printBoard(Collection<ChessPiece> chessPieces) {
 
-        String[][] frame = new String[9][9];
 
         for(String[] arr : frame) {
-            Arrays.fill(arr, ".");
+            Arrays.fill(arr, "·");
         }
 
         for(ChessPiece chessPiece : chessPieces) {

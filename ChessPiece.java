@@ -12,7 +12,7 @@ public abstract class ChessPiece {
     public Boolean isBlack;
 
 
-    abstract void movePiece(Position from, Position to);
+//    abstract void movePiece(Position from, Position to);
 
     public abstract ArrayList<ArrayList<Position>> getPossiblePosition();
 }

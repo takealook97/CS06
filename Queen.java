@@ -9,12 +9,10 @@ public class Queen extends ChessPiece {
     }
 
     @Override
-    public void movePiece(Position from, Position to) {
-
-    }
-
-    @Override
     public ArrayList<ArrayList<Position>> getPossiblePosition() {
-        return null;
+        ArrayList<ArrayList<Position>> list = new ArrayList<>(4);
+//        new Bishop().getPossiblePosition();
+//        new Rook().getPossiblePosition();
+        return list;
     }
 }
