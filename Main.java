@@ -31,13 +31,21 @@ public class Main {
                         if (input[0].charAt(0) == '?') {
                             input[0] = input[0].replace("?", "");
                             if (inputRange.inputCheck(input[0])) {
-                                System.out.println(board.getPossiblePosition(input[0]));
-                            }
+                                if (!Board.pieceMap.containsKey(input[0])) {
+                                    output.printEmptyError();
+                                } else {
+                                    System.out.println(board.getPossiblePosition(input[0]) + "\n");
+                                }
+                            } else output.printError();
                         } else output.printError();
                     } else output.printError();
                 }
                 case 2 -> {
                     if (inputRange.inputCheck(input[0]) && inputRange.inputCheck(input[1])) {//범위확인
+                        if (!Board.pieceMap.containsKey(input[0])) {
+                            output.printEmptyError();
+                            continue;
+                        }
                         if (board.getPossiblePosition(input[0]).contains(input[1])) {//움직일 수 있는 칸인지 확인
                             board.move(Converter.toPosition(input[0]), Converter.toPosition(input[1]));//이동
                         } else {
