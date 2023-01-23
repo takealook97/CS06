@@ -15,6 +15,7 @@ public class Main {
         output.printBoard(Board.pieceMap.values());
 
         InputRange inputRange = new InputRange();
+        Turn turn = new Turn();
 
         out:
         while (true) {
@@ -41,6 +42,8 @@ public class Main {
                     } else output.printError();
                 }
                 case 2 -> {
+                    turn.verifyTurn(input[0]);//차례검증
+                    if (!Turn.result) continue;//자신의 차례가 아니면 오류 출력(아무일도 일어나지 않음)
                     if (inputRange.inputCheck(input[0]) && inputRange.inputCheck(input[1])) {//범위확인
                         if (!Board.pieceMap.containsKey(input[0])) {
                             output.printEmptyError();
@@ -52,8 +55,6 @@ public class Main {
                             output.printLimit();
                             continue;
                         }
-                        new Turn().verifyTurn(input[0]);//차례검증
-                        if (!Turn.result) continue;//자신의 차례가 아니면 오류 출력(아무일도 일어나지 않음)
                         output.printBoard(Board.pieceMap.values());
                     } else output.printError();
                     board.calculateScore();
