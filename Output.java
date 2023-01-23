@@ -1,25 +1,30 @@
+import java.util.Arrays;
+import java.util.Collection;
+
 public class Output {
-    void printBoard() {
-        System.out.println();
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(Board.frame[i][j]);
+    public void printBoard(Collection<ChessPiece> chessPieces) {
+
+        String[][] frame = new String[9][9];
+
+        for(String[] arr : frame) {
+            Arrays.fill(arr, ".");
+        }
+
+        for(ChessPiece chessPiece : chessPieces) {
+            frame[chessPiece.position.getY()][chessPiece.position.getX()] = chessPiece.pieceType;
+        }
+
+        System.out.println(" ABCDEFGH");
+        for (int i = 1; i <= 8; i++) {
+            System.out.print(i);
+            for (int j = 1; j <= 8; j++) {
+                System.out.print(frame[i][j]);
             }
             System.out.println();
         }
-        System.out.println();
+        System.out.println(" ABCDEFGH\n");
     }
 
-    void initPiece() {
-        new Board().makeEmptyFrame();
-        new Pawn().makePawn();
-        new Rook().makeRook();
-        new Knight().makeKnight();
-        new Bishop().makeBishop();
-        new King().makeKing();
-        new Queen().makeQueen();
-        new Output().printBoard();
-    }
 
     void printScore() {
 //        calculateScore();

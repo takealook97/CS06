@@ -1,20 +1,20 @@
-public class Queen extends Movement{
-    void makeQueen() {
-        Board.frame[1][5] = "\u265B";
-        Board.frame[8][5] = "\u2655";
-        Board.blackExistance[1][5] = true;
-        Board.whiteExistance[8][5] = true;
+import java.util.ArrayList;
+
+public class Queen extends ChessPiece {
+
+    public Queen(Position position, Boolean isBlack) {
+        this.position = position;
+        this.isBlack = isBlack;
+        pieceType = isBlack ? ChessConstant.BLACK_QUEEN : ChessConstant.WHITE_QUEEN;
     }
+
     @Override
-    public void movePiece(String[] input) {
-        if (input[0].equals("black")) {
-            Board.frame[Verification.objectRank][Verification.objectFile] = "\u265B";
-            Board.frame[Verification.rank][Verification.file] = "·";
-        } else if (input[0].equals("white")) {
-            Board.frame[Verification.objectRank][Verification.objectFile] = "\u2655";
-            Board.frame[Verification.rank][Verification.file] = "·";
-        } else {
-            new Output().printLimit();
-        }
+    public void movePiece(Position from, Position to) {
+
+    }
+
+    @Override
+    public ArrayList<ArrayList<Position>> getPossiblePosition() {
+        return null;
     }
 }

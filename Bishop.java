@@ -1,24 +1,51 @@
-public class Bishop extends Movement{
-    void makeBishop() {
-        Board.frame[1][3] = "\u265D";
-        Board.frame[1][6] = "\u265D";
-        Board.frame[8][3] = "\u2657";
-        Board.frame[8][6] = "\u2657";
-        Board.blackExistance[1][3] = true;
-        Board.blackExistance[1][6] = true;
-        Board.whiteExistance[8][3] = true;
-        Board.whiteExistance[8][6] = true;
+import java.util.ArrayList;
+
+public class Bishop extends ChessPiece {
+    public Bishop(Position position, Boolean isBlack) {
+        this.position = position;
+        this.isBlack = isBlack;
+        pieceType = isBlack ? ChessConstant.BLACK_BISHOP : ChessConstant.WHITE_BISHOP;
     }
+
     @Override
-    public void movePiece(String[] input) {
-        if (input[0].equals("black")) {
-            Board.frame[Verification.objectRank][Verification.objectFile] = "\u265D";
-            Board.frame[Verification.rank][Verification.file] = "·";
-        } else if (input[0].equals("white")) {
-            Board.frame[Verification.objectRank][Verification.objectFile] = "\u2657";
-            Board.frame[Verification.rank][Verification.file] = "·";
-        } else {
-            new Output().printLimit();
+    public void movePiece(Position from, Position to) {
+
+    }
+
+    @Override
+    public ArrayList<ArrayList<Position>> getPossiblePosition() {
+        //TODO 위 아래 나눠서 움직이는 게 아니라 한번에 움직일 수 있는 방법 생각해보기
+        ArrayList<ArrayList<Position>> list = new ArrayList<>(4);
+        int curY = position.getY();
+        int leftX = position.getX();
+        int rightX = position.getX();
+
+        for (int i = 0; i < 4; i++) {
+            list.add(new ArrayList<>());
         }
+
+        while (curY++ < 9) {
+            if (leftX-- > 0) {
+                list.get(0).add(new Position(curY, leftX));
+            }
+            if (rightX++ > 0) {
+                list.get(1).add(new Position(curY, rightX));
+            }
+        }
+
+        curY = position.getY();
+        leftX = position.getX();
+        rightX = position.getX();
+
+        while (curY-- > 0) {
+            if (leftX-- > 0) {
+                list.get(2).add(new Position(curY, leftX));
+            }
+            if (rightX++ > 0) {
+                list.get(3).add(new Position(curY, rightX));
+            }
+        }
+
+        return list;
     }
 }

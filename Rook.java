@@ -1,24 +1,40 @@
-public class Rook extends Movement{
-    void makeRook() {
-        Board.frame[1][1] = "\u265C";
-        Board.frame[1][8] = "\u265C";
-        Board.frame[8][1] = "\u2656";
-        Board.frame[8][8] = "\u2656";
-        Board.blackExistance[1][1] = true;
-        Board.blackExistance[1][8] = true;
-        Board.whiteExistance[8][1] = true;
-        Board.whiteExistance[8][8] = true;
+import java.util.ArrayList;
+
+public class Rook extends ChessPiece {
+
+    public Rook(Position position, Boolean isBlack) {
+        this.position = position;
+        this.isBlack = isBlack;
+        pieceType = isBlack ? ChessConstant.BLACK_ROOK : ChessConstant.WHITE_ROOK;
     }
+
     @Override
-    public void movePiece(String[] input) {
-        if (input[0].equals("black")) {
-            Board.frame[Verification.objectRank][Verification.objectFile] = "\u265C";
-            Board.frame[Verification.rank][Verification.file] = "·";
-        } else if (input[0].equals("white")) {
-            Board.frame[Verification.objectRank][Verification.objectFile] = "\u2656";
-            Board.frame[Verification.rank][Verification.file] = "·";
-        } else {
-            new Output().printLimit();
+    public void movePiece(Position from, Position to) {
+
+    }
+
+    @Override
+    public ArrayList<ArrayList<Position>> getPossiblePosition() {
+        ArrayList<ArrayList<Position>> list = new ArrayList<>(4);
+        for(int i = 0; i < 4; i++) list.add(new ArrayList<>());
+
+        for(int i = position.getX() - 1; i >= 1; i--) {
+            list.get(0).add(new Position(position.getY(), i));
         }
+
+        for(int i = position.getX() + 1; i <= 8; i++) {
+            list.get(1).add(new Position(position.getY(), i));
+        }
+
+        for(int i = position.getY() - 1; i >= 1; i--) {
+            list.get(2).add(new Position(i, position.getX()));
+        }
+
+        for(int i = position.getY() + 1; i <= 8; i++) {
+            list.get(3).add(new Position(i, position.getX()));
+        }
+
+
+        return list;
     }
 }
